@@ -1,0 +1,43 @@
+{% extends "kvmapp/base.html" %}
+
+{% block content %}
+<div class="container">
+  {% if error_message %}
+    <div class="alert alert-danger" role="alert">
+      {{ error_message }}
+    </div>
+  {% else %}
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Nom</th>
+          <th scope="col">Mémoire</th>
+          <th scope="col">vCPU</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for vm in vm_list %}
+          <tr>
+            <td><a href="{% url 'vm_detail' vm.id %}">{{ vm.name }}</a></td>
+
+            <td>{{ vm.memory }} KiB</td>
+            <td>{{ vm.vcpu }}</td>
+            <td>
+              {% if vm.state == 'running' %}
+                <a href="{% url 'vm_stop' vm.id %}" class="btn btn-danger">Arrêter</a>
+              {% else %}
+                <a href="{% url 'vm_start' vm.id %}" class="btn btn-success">Démarrer</a>
+              {% endif %}
+
+                <a href="{% url 'supprimer_vm' vm.id %}" class="btn btn-danger">Supprimer</a>
+
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p><a href="{% url 'vm_new' %}" class="btn btn-primary">Nouvelle machine virtuelle</a></p>
+  {% endif %}
+</div>
+{% endblock %}

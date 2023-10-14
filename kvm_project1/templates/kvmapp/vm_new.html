@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Créer une nouvelle machine virtuelle</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Créer une nouvelle machine virtuelle</h1>
+        <form method="post" action="{% url 'creer_vm' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="nom_vm">Nom de la machine virtuelle :</label>
+                <input type="text" name="nom_vm" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="os">Système d'exploitation :</label>
+                <select name="os" class="form-control">
+                    <option value="windows">Windows</option>
+                    <option value="linux">Linux</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="memoire">Quantité de mémoire (en Go) :</label>
+                <input type="number" name="memoire" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="processeurs">Nombre de processeurs :</label>
+                <input type="number" name="processeurs" class="form-control" required>
+            </div>
+            <input type="submit" value="Créer la machine virtuelle" class="btn btn-primary">
+        </form>
+    </div>
+</body>
+</html>

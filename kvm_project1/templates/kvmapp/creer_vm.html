@@ -1,0 +1,22 @@
+
+  <h1>Créer une nouvelle machine virtuelle</h1>
+
+<form method="post" action="{% url 'creer_vm' %}">
+    {% csrf_token %}
+    <label for="nom_vm">Nom de la machine virtuelle :</label>
+    <input type="text" name="nom_vm" required><br>
+
+    <label for="memoire">Quantité de mémoire (en Mo) :</label>
+    <input type="number" name="memoire" required><br>
+
+    <label for="vcpu">Nombre de vCPU :</label>
+    <input type="number" name="vcpu" required><br>
+
+    <label for="os">Système d'exploitation :</label>
+    <select name="os" required>
+      <option value="linux">Linux</option>
+      <option value="windows">Windows</option>
+    </select><br>
+
+    <button type="submit">Créer</button>
+  </form>

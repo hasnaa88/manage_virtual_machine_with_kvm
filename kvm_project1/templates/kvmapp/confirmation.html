@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Machine virtuelle créée</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+    <div class="container text-center border='2'">
+        <h1>La machine virtuelle a été créée avec succès !</h1>
+        <p>Nom de la machine virtuelle : {{ nom_vm }}</p>
+        <p>Quantité de mémoire : {{ memoire }} Mo</p>
+        <p>Nombre de vCPU : {{ vcpu }}</p>
+        <p>Système d'exploitation : {{ os }}</p>
+        <br>
+       <a href="{% url 'vm_list' %}" class="btn btn-primary">Voir la liste des vms</a>
+    </div>
+
+
+</body>
+</html>

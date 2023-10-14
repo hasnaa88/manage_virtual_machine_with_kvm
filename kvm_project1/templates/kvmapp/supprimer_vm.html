@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Supprimer la machine virtuelle</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Supprimer la machine virtuelle</h1>
+        <p>Êtes-vous sûr de vouloir supprimer la machine virtuelle "{{ vm.name }}" ?</p>
+        <form method="post">
+            {% csrf_token %}
+            <input type="submit" value="delete" class="btn btn-danger">
+            <a href="{% url 'vm_list' %}" class="btn btn-secondary">Annuler</a>
+        </form>
+    </div>
+</body>
+</html>
